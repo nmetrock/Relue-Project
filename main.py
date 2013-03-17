@@ -8,8 +8,7 @@ License:	GNU GPL <http://www.gnu.org/licenses/gpl.html>
 
 import pygame
 import os
-import sys
-import random
+import rules
 
 
 WIDTH = 640
@@ -55,6 +54,7 @@ class Generate_Map:
             self.tile(TILES[i])
 
     def tile(self, name):
+        """Generates all tiles on the map"""
         self.name = name
 
         if name == GRASS:
@@ -66,7 +66,8 @@ class Generate_Map:
                 self.y += 40
 
     def generate_grass(self):
-        grass_tile = pygame.image.load(os.path.join("data", "grass" + str(random.randint(0,3)) + ".png")).convert()
+        #variable = pygame.image.load(file).convert
+        grass_tile = pygame.image.load(os.path.join("data", "tiles", "grass0.png")).convert()
         return grass_tile
 
     def unit(self, unit_name):
@@ -84,7 +85,7 @@ background.fill((BG_COLOR))
 background = background.convert()
 
 #generate map & draw to screen
-grass_tile = pygame.image.load(os.path.join("data", "grass0.png")).convert()
+#grass_tile = pygame.image.load(os.path.join("data", "grass0.png")).convert()
 game_map = Generate_Map(GRID_X, GRID_Y)
 screen.blit(background, (0, 0))
 game_map.generate_tiles()
