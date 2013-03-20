@@ -94,6 +94,9 @@ background = pygame.Surface(screen.get_size())
 background.fill((BG_COLOR))
 background = background.convert()
 
+#Add text for title
+#run title.py
+
 #Generate map & draw to screen
 game_map = GenerateMap(GRID_X, GRID_Y)
 screen.blit(background, (0, 0))
