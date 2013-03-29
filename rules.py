@@ -17,7 +17,6 @@ ACOLYTES = [.5, .4, .3, .5, .9, .3, .3, .2, .5]
 ENVOYS = [.1, .1, 1, .1, 1, .1, .1, 1, .1]
 KINGS = [1, 1, .1, 1, .1, 1, 1, .1, 1]
 
-
 #generate a screen (640x400)
 #make background color of screen (black) 
 
@@ -60,10 +59,12 @@ KINGS = [1, 1, .1, 1, .1, 1, 1, .1, 1]
 				#when only three slot selections have been chosen from rules (26-29) the middle selection stops when it encounters the other dirt path
 
 
-
 #mountain is placed (4th)
 	#mountain goes under fort
 	#mountain never crosses water or dirt
 		#mountain can start on any slot still covered by grass
 			#mountain travels in single and double file
 			#mountain travels in a random direction for any of (1-3) slots at a time
+
+
+
