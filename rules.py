@@ -1,11 +1,20 @@
-#TILE = [slow, defense, siege, food, attack, air]
-GRASS = [.6, .5, .75, 1, .4, .5]
-DIRT = [.5, .6, .5, .75, 1, .75]
-WATER = [float('inf'), 0, 0, 0, 0, 0]
-MOUNTAIN = [1, .75, 1, .5, .75, .4]
-FORT = [.75, 1, .4, .6, .5, 1]
+"""
+Name: title.py
+Purpose: Text for the project title.
+Author: Nathaniel Metrock & Sean Jackson
+License: GNU GPL <http://www.gnu.org/licenses/gpl.html>
+"""
 
-#UNIT = [attack, defense, group, cost, endurance, morale, health, move, level]
+
+#TILE = [terrain, fortify, siege, rations, offence, weather]
+GRASS = [.75, .6, .75, .75, .5, .6]
+DIRT = [1, .5, .5, .6, .6, .75]
+WATER = [float('inf'), 0, 0, 0, 0, 0]
+MOUNTAIN = [.5, .75, 1, 1, 1, .5]
+FORT = [.6, 1, .6, .5, .75, 1]
+
+
+#UNIT = [attack, defense, group, cost, endurance, morale, health, journey, level]
 ARCHERS = [.4, .3, .7, .2, .7, .6, .5, .8, .4]
 SPEARMEN = [.6, .8, .8, .6, .5, .5, .7, .6, .6]
 SELLSWORDS = [.3, .7, .4, .4, .8, .2, .6, .5, .2]
@@ -16,6 +25,7 @@ PRIESTS = [.2, .5, .5, .3, .2, .9, .2, .7, .3]
 ACOLYTES = [.5, .4, .3, .5, .9, .3, .3, .2, .5]
 ENVOYS = [.1, .1, 1, .1, 1, .1, .1, 1, .1]
 KINGS = [1, 1, .1, 1, .1, 1, 1, .1, 1]
+
 
 #generate a screen (640x400)
 #make background color of screen (black) 

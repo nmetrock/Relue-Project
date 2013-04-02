@@ -1,7 +1,14 @@
+"""
+Name: title.py
+Purpose: Text for the project title.
+Author: Nathaniel Metrock
+License: GNU GPL <http://www.gnu.org/licenses/gpl.html>
+"""
+
 import os.path
 import random
 import pygame
-
+import title
 
 WIDTH = 640
 HEIGHT = 400
@@ -136,7 +143,7 @@ while done == False:
 		generate_map()
 		first_run = False
 
-    pygame.display.flip()
+	pygame.display.flip()
  
     clock.tick(MAX_FPS)
 
