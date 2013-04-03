@@ -10,25 +10,25 @@ License: GNU GPL <http://www.gnu.org/licenses/gpl.html>
 
 # unit variables
 
-# attack = a
-# defence = d 
-# group = g
-# cost = c 
-# endurance = e 
-# morale = m
-# health = h 
-# journey = j
-# level = l 
+# attack = A
+# defence = D 
+# group = G
+# cost = C
+# endurance = E 
+# morale = M
+# health = H 
+# journey = J
+# level = L
 
 
 # tile variables
 
-# terrain = t
-# fortify = f
-# siege = s 
-# rations = r
-# offence = o 
-# weather = w
+# terrain = T
+# fortify = F
+# siege = S 
+# rations = R
+# offence = O
+# weather = W
 
 
 # tile to unit rules
@@ -44,8 +44,8 @@ License: GNU GPL <http://www.gnu.org/licenses/gpl.html>
 
 # unit to unit rules
 
-# (altered morale) = (altered morale) when unit is placed with no unit above, below, to the left, and to the right 
-# (morale) x (group) = (ail_alt_morale) when unit is placed with a unit above or below or to the left or to the right
+# (alt_morale) = (alt_morale) when unit is placed with no unit above, below, to the left, and to the right 
+# (alt_morale) x (group) = (ail_alt_morale) when unit is placed with a unit above or below or to the left or to the right
 # level changes all unit variables except level
 
 
@@ -70,18 +70,18 @@ License: GNU GPL <http://www.gnu.org/licenses/gpl.html>
 
 # army battle rules
 
-# (((b1p1 health) + (b1p1 ail_alt_defence)) - ((b1p2 alt_attack) + (b1p2 (alt_morale or ail_alt_morale))) + (b2p1 health) = (b2p1 alt_health)
-# (((b2p1 alt_health) + (b2p1 ail_alt_defence)) - ((b2p2 alt_attack) + (b2p2 (alt_morale or ail_alt_morale))) + (b3p1 health) = (b3p1 alt_health)
-# (((b3p1 alt_health) + (b3p1 ail_alt_defence)) - ((b3p2 alt_attack) + (b3p2 (alt_morale or ail_alt_morale))) + (b4p1 health) = (b4p1 alt_health)
-# (((b4p1 alt_health) + (b4p1 ail_alt_defence)) - ((b4p2 alt_attack) + (b4p2 (alt_morale or ail_alt_morale))) + (b5p1 health) = (b5p1 alt_health)
-# (((b5p1 alt_health) + (b5p1 ail_alt_defence)) - ((b5p2 alt_attack) + (b5p2 (alt_morale or ail_alt_morale))) = (p1 alt_health)
-# (((b1p2 health) + (b1p2 ail_alt_defence)) - ((b1p1 alt_attack) + (b1p1 (alt_morale or ail_alt_morale))) + (b2p2 health) = (b2p2 alt_health)
-# (((b2p2 alt_health) + (b2p2 ail_alt_defence)) - ((b2p1 alt_attack) + (b2p1 (alt_morale or ail_alt_morale))) + (b3p2 health) = (b3p2 alt_health)
-# (((b3p2 alt_health) + (b3p2 ail_alt_defence)) - ((b3p1 alt_attack) + (b3p1 (alt_morale or ail_alt_morale))) + (b4p2 health) = (b4p2 alt_health)
-# (((b4p2 alt_health) + (b4p2 ail_alt_defence)) - ((b4p1 alt_attack) + (b4p1 (alt_morale or ail_alt_morale))) + (b5p2 health) = (b5p2 alt_health)
-# (((b5p2 alt_health) + (b5p2 ail_alt_defence)) - ((b5p1 alt_attack) + (b5p1 (alt_morale or ail_alt_morale))) = (p2 alt_health)
-# if (p1 alt_health) > (p2 alt_health) then p1 wins
-# if (p2 alt_health) > (p1 alt_health) then p2 wins
+# (((b1p1 health) + (b1p1 ail_alt_defence)) - ((b1p2 alt_attack) + (b1p2 (alt_morale and/or ail_alt_morale))) + (b2p1 health) = (b2p1 alt_health)
+# (((b2p1 alt_health) + (b2p1 ail_alt_defence)) - ((b2p2 alt_attack) + (b2p2 (alt_morale and/or ail_alt_morale))) + (b3p1 health) = (b3p1 alt_health)
+# (((b3p1 alt_health) + (b3p1 ail_alt_defence)) - ((b3p2 alt_attack) + (b3p2 (alt_morale and/or ail_alt_morale))) + (b4p1 health) = (b4p1 alt_health)
+# (((b4p1 alt_health) + (b4p1 ail_alt_defence)) - ((b4p2 alt_attack) + (b4p2 (alt_morale and/or ail_alt_morale))) + (b5p1 health) = (b5p1 alt_health)
+# (((b5p1 alt_health) + (b5p1 ail_alt_defence)) - ((b5p2 alt_attack) + (b5p2 (alt_morale and/or ail_alt_morale))) = (p1 alt_health)
+# (((b1p2 health) + (b1p2 ail_alt_defence)) - ((b1p1 alt_attack) + (b1p1 (alt_morale and/or ail_alt_morale))) + (b2p2 health) = (b2p2 alt_health)
+# (((b2p2 alt_health) + (b2p2 ail_alt_defence)) - ((b2p1 alt_attack) + (b2p1 (alt_morale and/or ail_alt_morale))) + (b3p2 health) = (b3p2 alt_health)
+# (((b3p2 alt_health) + (b3p2 ail_alt_defence)) - ((b3p1 alt_attack) + (b3p1 (alt_morale and/or ail_alt_morale))) + (b4p2 health) = (b4p2 alt_health)
+# (((b4p2 alt_health) + (b4p2 ail_alt_defence)) - ((b4p1 alt_attack) + (b4p1 (alt_morale and/or ail_alt_morale))) + (b5p2 health) = (b5p2 alt_health)
+# (((b5p2 alt_health) + (b5p2 ail_alt_defence)) - ((b5p1 alt_attack) + (b5p1 (alt_morale and/or ail_alt_morale))) = (p2 alt_health)
+# if (p1 alt_health) > (p2 alt_health): then p1 wins
+# else: p2 wins
 
 
 #########################################################################movement#################################################################################

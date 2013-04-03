@@ -6,7 +6,7 @@ License: GNU GPL <http://www.gnu.org/licenses/gpl.html>
 """
 
 
-import pygame, sys
+import pygame
 from pygame.locals import *
 
 
@@ -35,7 +35,7 @@ textRect.centerx = windowSurface.get_rect().centerx
 textRect.centery = windowSurface.get_rect().centery
 
 
-# draw the white background onto the surface
+# draw the black background onto the surface
 windowSurface.fill(black)
 
 
@@ -51,12 +51,30 @@ windowSurface.blit(text,textRect)
 
 # draw the window onto the screen
 pygame.display.update()
+texta = basicFont.render("PRESS THE SPACE BAR",True,white,black)
+textRecta = text.get_rect()
+textRect.centerx = windowSurface.get_rect().centerx
+textRect.centery = windowSurface.get_rect().centery
+
+windowSurface.blit(texta,textRecta)
+
+pygame.display.update()
 
 
-# run the game loop
-while True:
+
+# turn it off
+done = False
+clock = pygame.time.Clock()
+first_run = True
+
+while done == False:
     for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
+        if event.type == pygame.QUIT:
+            done = True
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                done = True
+                # run the game loop
+
+pygame.quit()
 

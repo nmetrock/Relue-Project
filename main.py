@@ -9,7 +9,6 @@ import os.path
 import random
 import pygame
 import title
-
 WIDTH = 640
 HEIGHT = 400
 GRID_X = 120
