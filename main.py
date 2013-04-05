@@ -22,6 +22,36 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Relue Project")
 
 
+def draw_map():
+	x = GRID_X
+	y = 0
+	grass = pygame.image.load(os.path.join("data","tiles",
+											"grass.png")).convert()
+	water = pygame.image.load(os.path.join("data","tiles",
+											"water.png")).convert()
+	dirt = pygame.image.load(os.path.join("data","tiles",
+											"dirt.png")).convert()
+	mountain = pygame.image.load(os.path.join("data","tiles",
+												"mountain.png")).convert()
+	fort = pygame.image.load(os.path.join("data","tiles",
+											"fort.png")).convert()
+
+	for row in range(10):
+		for col in range(10):
+			if grid[row][col] == 'G':
+				screen.blit(grass, (x, y))
+			elif grid[row][col] == 'W':
+				screen.blit(water, (x, y))
+			elif grid[row][col] == 'D':
+				screen.blit(dirt, (x, y))
+			elif grid[row][col] == 'M':
+				screen.blit(mountain, (x, y))
+			elif grid[row][col] == 'F':
+				screen.blit(fort, (x, y))
+			x += 40
+		x = GRID_X
+		y += 40
+
 def off_map(row, col, direction, distance):
  	if direction == 0:
  		if row - distance < 0:
@@ -37,19 +67,8 @@ def off_map(row, col, direction, distance):
  			return True
 
 def generate_map():
+	global grid
 	grid = [['G' for row in range(10)] for col in range(10)]
-	x = GRID_X
-	y = 0
-	grass = pygame.image.load(os.path.join("data","tiles",
-											"grass.png")).convert()
-	water = pygame.image.load(os.path.join("data","tiles",
-											"water.png")).convert()
-	dirt = pygame.image.load(os.path.join("data","tiles",
-											"dirt.png")).convert()
-	mountain = pygame.image.load(os.path.join("data","tiles",
-												"mountain.png")).convert()
-	fort = pygame.image.load(os.path.join("data","tiles",
-											"fort.png")).convert()
 
 	water_grid = []
 	coming_from = None
@@ -68,9 +87,13 @@ def generate_map():
 		while next_location:
 			r_direct = random.randrange(4)
 			r_dist = random.randint(2,4)
-			if (r_direct==coming_from) or (off_map(w_row,w_col,r_direct,r_dist) and len(water_grid)<=8):
+			if (r_direct==coming_from) or (off_map(w_row,w_col,r_direct,r_dist) and len(water_grid)<8):
 				next_location = False
 				break
+			elif off_map(w_row,w_col,r_direct,r_dist) and len(water_grid)>=8:
+				last_draw = True
+			else:
+				last_draw = False
 			if r_direct == 0:
 				for i in range(r_dist):
 					w_row -= 1
@@ -95,27 +118,15 @@ def generate_map():
 					water_grid.append((w_row, w_col))
 					coming_from = 1
 					next_location = False
-	print water_grid
+			if last_draw:
+				gen_water = False
 	print len(water_grid) #for debugging
+	visible = 0 #for debugging
 	for row, col in water_grid:
 		if -1<row<10 and -1<col<10:
 			grid[row][col] = 'W'
-	for row in range(10):
-		for col in range(10):
-			if grid[row][col] == 'G':
-				screen.blit(grass, (x, y))
-			elif grid[row][col] == 'W':
-				screen.blit(water, (x, y))
-			elif grid[row][col] == 'D':
-				screen.blit(dirt, (x, y))
-			elif grid[row][col] == 'M':
-				screen.blit(mountain, (x, y))
-			elif grid[row][col] == 'F':
-				screen.blit(fort, (x, y))
-			x += 40
-		x = GRID_X
-		y += 40
-
+			visible += 1 #for debugging
+	print visible #for debugging
 
 
 done = False
@@ -141,6 +152,7 @@ while done == False:
 		screen.fill(black)
 		generate_map()
 		first_run = False
+	draw_map()
 
 	pygame.display.flip()
  
