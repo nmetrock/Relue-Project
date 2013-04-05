@@ -1,14 +1,9 @@
-"""
-Name: title.py
-Purpose: Text for the project title.
-Author: Nathaniel Metrock
-License: GNU GPL <http://www.gnu.org/licenses/gpl.html>
-"""
-
 import os.path
 import random
 import pygame
 import title
+
+
 WIDTH = 640
 HEIGHT = 400
 GRID_X = 120
@@ -87,7 +82,8 @@ def generate_map():
 		while next_location:
 			r_direct = random.randrange(4)
 			r_dist = random.randint(2,4)
-			if (r_direct==coming_from) or (off_map(w_row,w_col,r_direct,r_dist) and len(water_grid)<8):
+			if ((r_direct==coming_from) or
+				(off_map(w_row,w_col,r_direct,r_dist) and len(water_grid)<8)):
 				next_location = False
 				break
 			elif off_map(w_row,w_col,r_direct,r_dist) and len(water_grid)>=8:
@@ -97,36 +93,43 @@ def generate_map():
 			if r_direct == 0:
 				for i in range(r_dist):
 					w_row -= 1
+					if (w_row < 0) or (len(water_grid) == 16):
+						gen_water = False
+						break
 					water_grid.append((w_row, w_col))
 					coming_from = 2
 					next_location = False
 			elif r_direct == 1:
 				for i in range(r_dist):
 					w_col += 1
+					if (w_col > 9) or (len(water_grid) == 16):
+						gen_water = False
+						break
 					water_grid.append((w_row, w_col))
 					coming_from = 3
 					next_location = False
 			elif r_direct == 2:
 				for i in range(r_dist):
 					w_row += 1
+					if (w_row > 9) or (len(water_grid) == 16):
+						gen_water = False
+						break
 					water_grid.append((w_row, w_col))
 					coming_from = 0
 					next_location = False
 			else:
 				for i in range(r_dist):
 					w_col -= 1
+					if (w_col < 0) or (len(water_grid) == 16):
+						gen_water = False
+						break
 					water_grid.append((w_row, w_col))
 					coming_from = 1
 					next_location = False
 			if last_draw:
 				gen_water = False
-	print len(water_grid) #for debugging
-	visible = 0 #for debugging
 	for row, col in water_grid:
-		if -1<row<10 and -1<col<10:
-			grid[row][col] = 'W'
-			visible += 1 #for debugging
-	print visible #for debugging
+		grid[row][col] = 'W'
 
 
 done = False
