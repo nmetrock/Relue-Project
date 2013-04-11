@@ -70,6 +70,7 @@ License: GNU GPL <http://www.gnu.org/licenses/gpl.html>
 
 # army battle rules
 
+# while
 # (((b1p1 health) + (b1p1 ail_alt_defence)) - ((b1p2 alt_attack) + (b1p2 (alt_morale and/or ail_alt_morale))) + (b2p1 health) = (b2p1 alt_health)
 # (((b2p1 alt_health) + (b2p1 ail_alt_defence)) - ((b2p2 alt_attack) + (b2p2 (alt_morale and/or ail_alt_morale))) + (b3p1 health) = (b3p1 alt_health)
 # (((b3p1 alt_health) + (b3p1 ail_alt_defence)) - ((b3p2 alt_attack) + (b3p2 (alt_morale and/or ail_alt_morale))) + (b4p1 health) = (b4p1 alt_health)
@@ -85,3 +86,6 @@ License: GNU GPL <http://www.gnu.org/licenses/gpl.html>
 
 
 #########################################################################movement#################################################################################
+
+
+# journey rules for single unit type parties

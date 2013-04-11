@@ -7,11 +7,11 @@ License: GNU GPL <http://www.gnu.org/licenses/gpl.html>
 
 
 #TILE = [terrain, fortify, siege, rations, offence, weather]
-GRASS = [.75, .6, .75, .75, .5, .6]
-DIRT = [1, .5, .5, .6, .6, .75]
+GRASS = [.1, .6, .75, .75, .5, .6]
+DIRT = [.05, .5, .5, .6, .6, .75]
 WATER = [float('inf'), 0, 0, 0, 0, 0]
-MOUNTAIN = [.5, .75, 1, 1, 1, .5]
-FORT = [.6, 1, .6, .5, .75, 1]
+MOUNTAIN = [.25, .75, 1, 1, 1, .5]
+FORT = [.15, 1, .6, .5, .75, 1]
 
 
 #UNIT = [attack, defense, group, cost, endurance, morale, health, journey, level]
@@ -57,16 +57,20 @@ KINGS = [1, 1, .1, 1, .1, 1, 1, .1, 1]
 
 #dirt is placed (3rd)
 	#dirt goes under no tiles	
-		#dirt can start at (1) of (2-4) of the following slot selections 1: (160x,0y)   (200x,0y)   (240x,0y)   (280x,0y)   (320x,0y)   (360x,0y)   (400x,0y)   (440x,0y)
-	     												       	   #2: (120x,40y)  (120x,80y)  (120x,120y) (120x,160y) (120x,200y) (120x,240y) (120x,280y) (120x,320y)
-														       	   #3: (480x,40y)  (480x,80y)  (480x,120y) (480x,160y) (480x,200y) (480x,240y) (480x,280y) (480x,320y)
-														           #4: (160x,360y) (200x,360y) (240x,360y) (280x,360y) (320x,360y) (360x,360y) (400x,360y) (440x,360y)
+		#dirt can start at (1) of (2-4) of the following slot selections n: (160x,0y)   (200x,0y)   (240x,0y)   (280x,0y)   (320x,0y)   (360x,0y)   (400x,0y)   (440x,0y)
+	     												       	   		#w: (120x,40y)  (120x,80y)  (120x,120y) (120x,160y) (120x,200y) (120x,240y) (120x,280y) (120x,320y)
+														       	   		#e: (480x,40y)  (480x,80y)  (480x,120y) (480x,160y) (480x,200y) (480x,240y) (480x,280y) (480x,320y)
+														           		#s: (160x,360y) (200x,360y) (240x,360y) (280x,360y) (320x,360y) (360x,360y) (400x,360y) (440x,360y)
 			#dirt travels in single file
+			#dirt travels from an n slot selection (1) slot toward s before rule ()
+			#dirt travels from an n slot selection not toward an n slot
+			#dirt travels from an e slot selection (1) slot toward w before rule ()
+			#dirt travels from an s slot selection (1) slot toward n before rule ()
 			#dirt travels in a random direction for any of (2-4) slots at a time toward the opposite dirt slot selection
-			#dirt travels until it finds the opposite dirt slot selection from rules (26-29)
+			#dirt travels until it finds the opposite dirt slot selection from rules (60-63)
 			#dirt travels not in the direction from which it came when it changes direction
 			#dirt travels not across its own path
-				#when only three slot selections have been chosen from rules (26-29) the middle selection stops when it encounters the other dirt path
+				#when only three slot selections have been chosen from rules (60-63) the middle selection stops when it encounters the other dirt path
 
 
 #mountain is placed (4th)
