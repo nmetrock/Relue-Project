@@ -1,5 +1,5 @@
 """
-Name: title.py
+Name: rules.py
 Purpose: Text for the project title.
 Author: Nathaniel Metrock & Sean Jackson
 License: GNU GPL <http://www.gnu.org/licenses/gpl.html>
@@ -25,6 +25,9 @@ PRIESTS = [.2, .5, .5, .3, .2, .9, .2, .7, .3]
 ACOLYTES = [.5, .4, .3, .5, .9, .3, .3, .2, .5]
 ENVOYS = [.1, .1, 1, .1, 1, .1, .1, 1, .1]
 KINGS = [1, 1, .1, 1, .1, 1, 1, .1, 1]
+
+########################################################################single map rules#########################################################################
+
 
 
 #generate a screen (640x400)
@@ -62,15 +65,17 @@ KINGS = [1, 1, .1, 1, .1, 1, 1, .1, 1]
 														       	   		#e: (480x,40y)  (480x,80y)  (480x,120y) (480x,160y) (480x,200y) (480x,240y) (480x,280y) (480x,320y)
 														           		#s: (160x,360y) (200x,360y) (240x,360y) (280x,360y) (320x,360y) (360x,360y) (400x,360y) (440x,360y)
 			#dirt travels in single file
-			#dirt travels from an n slot selection (1) slot toward s before rule ()
-			#dirt travels from an n slot selection not toward an n slot
-			#dirt travels from an e slot selection (1) slot toward w before rule ()
-			#dirt travels from an s slot selection (1) slot toward n before rule ()
+			#dirt travels from an n slot selection (1) slot toward s before line (73)
+			#dirt travels from an e slot selection (1) slot toward w before line (73)
+			#dirt travels from an s slot selection (1) slot toward n before line (73)
+			#dirt travels from an w slot selection (1) slot toward e before line (73)
 			#dirt travels in a random direction for any of (2-4) slots at a time toward the opposite dirt slot selection
-			#dirt travels until it finds the opposite dirt slot selection from rules (60-63)
+			#dirt travels until it finds the opposite dirt slot selection from lines (60-63) minus one row
+			#dirt travels not across any of the slot selections from lines (60-63) exept for the opposite dirt slot selection 
+			#dirt travels not toward the its own starting slot
 			#dirt travels not in the direction from which it came when it changes direction
 			#dirt travels not across its own path
-				#when only three slot selections have been chosen from rules (60-63) the middle selection stops when it encounters the other dirt path
+				#when only three slot selections have been chosen from lines (60-63) the middle selection stops when it encounters the other dirt path
 
 
 #mountain is placed (4th)
@@ -79,6 +84,19 @@ KINGS = [1, 1, .1, 1, .1, 1, 1, .1, 1]
 		#mountain can start on any slot still covered by grass
 			#mountain travels in single and double file
 			#mountain travels in a random direction for any of (1-3) slots at a time
+			#mountain travels (3-6) slots
+
+
+#fort is placed (5th)
+	#fort goes under no tiles
+		#fort can start at any of (1-3) slot/slots inside the grid that is/are next to but not on top of a dirt slot
+
+
+#this is a complete_grid
+
+################################################################multiple map rules###############################################################################
 
 
 
+#generate world_grid (4x4)
+	#each complete_grid in the world_grid is (400x400)
